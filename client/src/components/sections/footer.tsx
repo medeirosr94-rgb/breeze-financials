@@ -1,0 +1,116 @@
+import { Mail, Phone, MapPin } from "lucide-react";
+import { FaLinkedin, FaFacebook, FaTwitter } from "react-icons/fa";
+
+export default function Footer() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <footer id="contact" className="bg-gray-900 text-white py-12">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="col-span-2">
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-xs">B</span>
+              </div>
+              <span className="text-xl font-bold">Breeze Financials</span>
+            </div>
+            <p className="text-gray-400 mb-4">
+              Professional bookkeeping and fractional CFO services for Toronto small businesses. 
+              Transform your finances, transform your business.
+            </p>
+            <p className="text-teal-400 font-semibold">Proudly serving Toronto and beyond.</p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold mb-4">Services</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <button 
+                  onClick={() => scrollToSection('bookkeeping')}
+                  className="hover:text-white transition-colors"
+                >
+                  Bookkeeping
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('fractional-cfo')}
+                  className="hover:text-white transition-colors"
+                >
+                  Fractional CFO
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('process')}
+                  className="hover:text-white transition-colors"
+                >
+                  Free Audit
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('about')}
+                  className="hover:text-white transition-colors"
+                >
+                  Meet Your CFO
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-semibold mb-4">Contact</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li className="flex items-center">
+                <Mail className="mr-2 text-teal-400" size={16} />
+                <span>hello@breezefinancials.ca</span>
+              </li>
+              <li className="flex items-center">
+                <Phone className="mr-2 text-teal-400" size={16} />
+                <span>(416) 555-0123</span>
+              </li>
+              <li className="flex items-center">
+                <MapPin className="mr-2 text-teal-400" size={16} />
+                <span>Toronto, ON</span>
+              </li>
+            </ul>
+            
+            {/* Social Media */}
+            <div className="flex space-x-4 mt-6">
+              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">
+                <FaLinkedin size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">
+                <FaFacebook size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">
+                <FaTwitter size={20} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm">
+            © 2024 Breeze Financials. All rights reserved.
+          </p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

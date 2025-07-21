@@ -1,0 +1,65 @@
+import { Star } from "lucide-react";
+
+const testimonials = [
+  {
+    name: "Sarah Chen",
+    company: "Tech Startup Founder",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b37c?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
+    content: "We saved $25,000 in the first year with Breeze's CFO insights. Got clarity on our business and now we can finally sleep at night knowing our finances are optimized."
+  },
+  {
+    name: "Maria Rodriguez",
+    company: "Restaurant Owner",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
+    content: "The cash flow planning alone has been game-changing. Rodrigo helped us navigate a critical growth period without cash flow stress."
+  },
+  {
+    name: "David Thompson",
+    company: "Construction Company",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
+    content: "Finally, financial reports that actually help me make decisions. The monthly reviews keep us on track and profitable."
+  }
+];
+
+export default function Testimonials() {
+  return (
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            What Our <span className="text-teal-600">Clients Say</span>
+          </h2>
+          <p className="text-xl text-gray-600">Real results from Toronto business owners</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} fill="currentColor" size={16} />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 mb-6 italic">
+                "{testimonial.content}"
+              </p>
+              <div className="flex items-center">
+                <img 
+                  src={testimonial.avatar}
+                  alt={`${testimonial.name} testimonial`} 
+                  className="w-12 h-12 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                  <p className="text-sm text-gray-600">{testimonial.company}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
-import { FaLinkedin, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaLinkedin, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import logoPath from "@assets/Transparent Logo (Finalized)_1753125211752.png";
 
 export default function Footer() {
@@ -102,6 +102,9 @@ export default function Footer() {
             
             {/* Social Media */}
             <div className="flex space-x-4 mt-6">
+              <a href="https://instagram.com/breeze_financials" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-400 transition-colors">
+                <FaInstagram size={20} />
+              </a>
               <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">
                 <FaLinkedin size={20} />
               </a>

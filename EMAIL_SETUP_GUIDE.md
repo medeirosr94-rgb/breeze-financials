@@ -18,10 +18,11 @@ You'll need to add these environment variables to your Replit project:
 - **Value**: Your email password or app-specific password
 - **Note**: If you have 2FA enabled, you may need an app password
 
-### 3. NOTIFICATION_EMAIL (Optional)
+### 3. NOTIFICATION_EMAIL (IMPORTANT!)
 - **Value**: Email where you want to receive lead notifications
+- **Current**: `no-reply@breezefinancials.com` (needs to be changed!)
+- **Should be**: Your actual email like `rodrigomedeiros@breezefinancials.com`
 - **Default**: Uses SMTP_USER if not set
-- **Example**: `rodrigomedeiros@breezefinancials.com`
 
 ### 4. SMTP_HOST (Optional)
 - **Value**: `smtpout.secureserver.net` (GoDaddy default)

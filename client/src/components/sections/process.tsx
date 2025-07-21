@@ -63,6 +63,21 @@ export default function Process() {
             Start Your Free Audit Today
             <ArrowRight className="ml-2" size={20} />
           </Button>
+          
+          {/* Mini FAQ */}
+          <div className="mt-8 max-w-2xl mx-auto">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Quick Questions</h4>
+            <div className="grid md:grid-cols-2 gap-4 text-left">
+              <div className="bg-white p-4 rounded-lg shadow-sm border">
+                <h5 className="font-medium text-gray-900 mb-2">How long does the audit take?</h5>
+                <p className="text-sm text-gray-600">Usually 2-3 business days. You get actionable insights in 48 hours.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm border">
+                <h5 className="font-medium text-gray-900 mb-2">Do I need to switch accountants?</h5>
+                <p className="text-sm text-gray-600">Not at all. We work alongside your existing team or can recommend trusted partners.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

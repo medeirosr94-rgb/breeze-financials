@@ -27,7 +27,20 @@ export default function Footer() {
               Professional bookkeeping and fractional CFO services for Toronto small businesses. 
               Transform your finances, transform your business.
             </p>
-            <p className="text-teal-400 font-semibold">Proudly serving Toronto and beyond.</p>
+            <p className="text-teal-400 font-semibold mb-4">Proudly serving Toronto & GTA</p>
+            
+            {/* Partner Badges */}
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">
+                QuickBooks ProAdvisor
+              </div>
+              <div className="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">
+                CPA Canada Member
+              </div>
+              <div className="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">
+                Toronto Board of Trade
+              </div>
+            </div>
           </div>
 
           {/* Quick Links */}

@@ -55,9 +55,9 @@ export default function ValueLadder() {
           </div>
 
           {/* Growth CFO */}
-          <div className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl p-6 shadow-xl text-white transform hover:scale-105 transition-all duration-300 relative">
+          <div className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl p-6 shadow-2xl text-white transform hover:scale-105 transition-all duration-300 relative ring-4 ring-teal-200 ring-opacity-50">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <span className="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-semibold">POPULAR</span>
+              <span className="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-xs font-bold shadow-lg">MOST POPULAR</span>
             </div>
             
             <div className="text-center mb-4">

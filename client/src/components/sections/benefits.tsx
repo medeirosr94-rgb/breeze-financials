@@ -39,17 +39,30 @@ export default function Benefits() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Why Choose a <span className="text-teal-600">Fractional CFO</span>?
+            Why You Need a <span className="text-teal-600">Fractional CFO</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get the financial leadership your business needs to grow, without the full-time executive cost.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+            You get the financial leadership your business needs to grow, without the full-time executive cost.
           </p>
+          <button className="text-teal-600 hover:text-teal-800 text-sm underline">
+            What's a Fractional CFO? (Quick explainer)
+          </button>
+          
+          {/* Client Results */}
+          <div className="mt-6 grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div className="bg-teal-50 p-3 rounded-lg text-sm text-gray-700">
+              <span className="font-semibold">"We identified $18K in tax savings in our first month."</span> — Sarah, Tech Startup
+            </div>
+            <div className="bg-teal-50 p-3 rounded-lg text-sm text-gray-700">
+              <span className="font-semibold">"Finally understand where our money goes each month."</span> — Mike, Construction
+            </div>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {benefits.map((benefit, index) => (
-            <div key={index} className="text-center group hover:bg-gray-50 p-6 rounded-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors duration-300">
+            <div key={index} className="text-center group hover:bg-gray-50 p-6 rounded-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-all duration-300 group-hover:scale-110">
                 <benefit.icon className="text-2xl text-teal-600 group-hover:text-white transition-colors duration-300" size={32} />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>

@@ -38,11 +38,11 @@ export default function Hero() {
           {/* Left Column: Content */}
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Start with a <span className="text-teal-600">Free Bookkeeping Audit</span>. 
-              Unlock CFO-Level Insights.
+              You Get a <span className="text-teal-600">Free Bookkeeping Audit</span>. 
+              Plus CFO-Level Insights.
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Get a personalized review from a finance expert and see how a Fractional CFO can transform your business.
+              You receive a personalized review from a finance expert and discover how a Fractional CFO can transform your business.
             </p>
             
             {/* Success Metrics */}
@@ -50,11 +50,11 @@ export default function Hero() {
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-teal-600 mb-1">89%</div>
-                  <div className="text-sm text-gray-600">See ROI in 3 months</div>
+                  <div className="text-sm text-gray-600">You see ROI in 3 months</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-teal-600 mb-1">$25K</div>
-                  <div className="text-sm text-gray-600">Average first year savings</div>
+                  <div className="text-sm text-gray-600">Your average first year savings</div>
                 </div>
               </div>
             </div>
@@ -77,18 +77,30 @@ export default function Hero() {
 
             {/* Social Proof */}
             <div className="text-center lg:text-left">
-              <p className="text-sm text-gray-500 mb-4">Trusted by Toronto small businesses</p>
-              <div className="flex items-center justify-center lg:justify-start space-x-4">
+              <p className="text-sm text-gray-500 mb-4">Trusted by 50+ Toronto businesses</p>
+              <div className="flex items-center justify-center lg:justify-start space-x-6 mb-4">
                 <div className="flex items-center">
-                  <span className="text-blue-500 mr-2">G</span>
+                  <span className="text-blue-500 mr-2 font-bold">G</span>
                   <span className="text-sm font-medium">4.9/5 Google Reviews</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-500 mr-2 font-bold">BBB</span>
+                  <span className="text-sm font-medium">A+ Rating</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-center lg:justify-start space-x-4">
+                <div className="bg-gray-100 px-3 py-1 rounded text-xs text-gray-600">
+                  CPA Certified
+                </div>
+                <div className="bg-gray-100 px-3 py-1 rounded text-xs text-gray-600">
+                  QuickBooks ProAdvisor
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Column: Lead Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto lg:mx-0">
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto lg:mx-0 animate-fadeInUp">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Request Your Free Audit</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -147,10 +159,15 @@ export default function Hero() {
               </Button>
             </form>
             
-            <p className="text-xs text-gray-500 text-center mt-4">
-              <Lock className="inline mr-1" size={12} />
-              Your information is secure and will never be shared.
-            </p>
+            <div className="text-center mt-4 space-y-2">
+              <p className="text-xs text-gray-500">
+                <Lock className="inline mr-1" size={12} />
+                Data is 100% confidential & secure
+              </p>
+              <p className="text-sm text-gray-600 italic">
+                "No spam. No hard sell. Just clear, actionable insights for your business."
+              </p>
+            </div>
           </div>
         </div>
       </div>

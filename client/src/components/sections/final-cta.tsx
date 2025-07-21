@@ -27,7 +27,7 @@ export default function FinalCTA() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button
             onClick={scrollToForm}
-            className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+            className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:scale-105"
           >
             <Calculator className="mr-2" size={20} />
             Request Free Audit
@@ -36,7 +36,7 @@ export default function FinalCTA() {
           <Button
             onClick={handleBookCall}
             variant="outline"
-            className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-200"
+            className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-200 hover:scale-105"
           >
             <Phone className="mr-2" size={20} />
             Book Instant 15-Min Call

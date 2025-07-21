@@ -50,13 +50,21 @@ export default function About() {
                   </div>
                 </div>
                 
-                <Button
-                  onClick={handleBookCall}
-                  className="bg-teal-500 text-white hover:bg-teal-600 rounded-full"
-                >
-                  <Calendar className="mr-2" size={20} />
-                  Book Instant 15-Min Call
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    onClick={handleBookCall}
+                    className="bg-teal-500 text-white hover:bg-teal-600 rounded-full"
+                  >
+                    <Calendar className="mr-2" size={20} />
+                    Book Instant 15-Min Call
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-teal-500 text-teal-600 hover:bg-teal-50 rounded-full"
+                  >
+                    Ask Rodrigo Anything
+                  </Button>
+                </div>
                 <p className="text-sm text-gray-500 mt-2">
                   Available today • Free consultation • No commitment
                 </p>

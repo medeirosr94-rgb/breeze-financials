@@ -38,12 +38,18 @@ export default function Testimonials() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300 relative">
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} fill="currentColor" size={16} />
                   ))}
                 </div>
+                {/* Video Play Button for first testimonial */}
+                {index === 0 && (
+                  <button className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white hover:bg-teal-600 transition-colors">
+                    <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5"></div>
+                  </button>
+                )}
               </div>
               
               {/* Result Badge */}

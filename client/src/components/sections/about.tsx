@@ -3,12 +3,8 @@ import { GraduationCap, Building, TrendingUp, MapPin, Calendar } from "lucide-re
 
 export default function About() {
   const handleBookCall = () => {
-    // In a real implementation, this would open a calendar booking widget
-    // For now, we'll scroll to contact form
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    // Open Calendly or similar booking widget
+    window.open('https://calendly.com/breeze-financials/intro-call', '_blank');
   };
 
   return (
@@ -21,9 +17,9 @@ export default function About() {
           
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row items-center gap-8">
-              {/* CFO Photo */}
+              {/* CFO Photo - More human, professional headshot */}
               <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&w=300&h=300&fit=crop&crop=face" 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=300&h=300&fit=crop&crop=face" 
                 alt="Rodrigo - Fractional CFO" 
                 className="w-48 h-48 rounded-full object-cover shadow-lg"
               />
@@ -59,8 +55,11 @@ export default function About() {
                   className="bg-teal-500 text-white hover:bg-teal-600 rounded-full"
                 >
                   <Calendar className="mr-2" size={20} />
-                  Book a Quick Intro Call
+                  Book Instant 15-Min Call
                 </Button>
+                <p className="text-sm text-gray-500 mt-2">
+                  Available today • Free consultation • No commitment
+                </p>
               </div>
             </div>
           </div>

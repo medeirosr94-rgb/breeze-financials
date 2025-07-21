@@ -5,19 +5,22 @@ const testimonials = [
     name: "Sarah Chen",
     company: "Tech Startup Founder",
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b37c?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
-    content: "We saved $25,000 in the first year with Breeze's CFO insights. Got clarity on our business and now we can finally sleep at night knowing our finances are optimized."
+    content: "We saved $25,000 in the first year with Breeze's CFO insights. Got clarity on our business and now we can finally sleep at night knowing our finances are optimized.",
+    result: "$25K saved in year 1"
   },
   {
     name: "Maria Rodriguez",
-    company: "Restaurant Owner",
+    company: "Restaurant Owner", 
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
-    content: "The cash flow planning alone has been game-changing. Rodrigo helped us navigate a critical growth period without cash flow stress."
+    content: "The cash flow planning alone has been game-changing. Rodrigo helped us navigate a critical growth period without cash flow stress.",
+    result: "Zero cash flow issues during expansion"
   },
   {
     name: "David Thompson",
     company: "Construction Company",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
-    content: "Finally, financial reports that actually help me make decisions. The monthly reviews keep us on track and profitable."
+    content: "Finally, financial reports that actually help me make decisions. The monthly reviews keep us on track and profitable.",
+    result: "15% profit increase in 6 months"
   }
 ];
 
@@ -34,7 +37,7 @@ export default function Testimonials() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300">
+            <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300 relative">
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
@@ -42,6 +45,14 @@ export default function Testimonials() {
                   ))}
                 </div>
               </div>
+              
+              {/* Result Badge */}
+              <div className="absolute top-4 right-4">
+                <span className="bg-teal-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                  {testimonial.result}
+                </span>
+              </div>
+              
               <p className="text-gray-600 mb-6 italic">
                 "{testimonial.content}"
               </p>

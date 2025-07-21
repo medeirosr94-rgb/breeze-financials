@@ -10,11 +10,8 @@ export default function FinalCTA() {
     }
   };
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleBookCall = () => {
+    window.open('https://calendly.com/breeze-financials/intro-call', '_blank');
   };
 
   return (
@@ -37,18 +34,18 @@ export default function FinalCTA() {
           </Button>
           <span className="text-teal-200">or</span>
           <Button
-            onClick={scrollToContact}
+            onClick={handleBookCall}
             variant="outline"
             className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-200"
           >
             <Phone className="mr-2" size={20} />
-            Got Questions? Let's Talk!
+            Book Instant 15-Min Call
           </Button>
         </div>
         
         <p className="text-sm text-teal-200 mt-6">
           <Shield className="inline mr-1" size={16} />
-          100% confidential • No obligation • Free consultation
+          100% confidential • No obligation • Available today
         </p>
       </div>
     </section>

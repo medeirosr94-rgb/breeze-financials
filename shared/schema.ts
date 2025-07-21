@@ -24,12 +24,10 @@ export const insertUserSchema = createInsertSchema(users).pick({
   password: true,
 });
 
-export const insertLeadSchema = createInsertSchema(leads).pick({
-  name: true,
-  email: true,
-  businessName: true,
-  phone: true,
-  message: true,
+export const insertLeadSchema = createInsertSchema(leads).omit({
+  id: true,
+  source: true,
+  createdAt: true,
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

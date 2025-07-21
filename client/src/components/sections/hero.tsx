@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Shield, Clock, Star, ArrowRight, Lock } from "lucide-react";
+import { Shield, Clock, Star, ArrowRight, Lock, TrendingUp } from "lucide-react";
 import { useFormSubmission } from "@/hooks/use-form-submission";
 
 export default function Hero() {
@@ -44,6 +44,20 @@ export default function Hero() {
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Get a personalized review from a finance expert and see how a Fractional CFO can transform your business.
             </p>
+            
+            {/* Success Metrics */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 mb-8 border border-teal-100">
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-teal-600 mb-1">89%</div>
+                  <div className="text-sm text-gray-600">See ROI in 3 months</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-teal-600 mb-1">$25K</div>
+                  <div className="text-sm text-gray-600">Average first year savings</div>
+                </div>
+              </div>
+            </div>
             
             {/* Trust Indicators */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mb-8">

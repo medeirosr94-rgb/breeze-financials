@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { FaLinkedin, FaFacebook, FaTwitter } from "react-icons/fa";
+import logoPath from "@assets/Transparent Logo (Finalized)_1753125211752.png";
 
 export default function Footer() {
   const scrollToSection = (id: string) => {
@@ -15,11 +16,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xs">B</span>
-              </div>
-              <span className="text-xl font-bold">Breeze Financials</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src={logoPath} 
+                alt="Breeze Financials" 
+                className="h-8 w-auto brightness-200"
+              />
             </div>
             <p className="text-gray-400 mb-4">
               Professional bookkeeping and fractional CFO services for Toronto small businesses. 

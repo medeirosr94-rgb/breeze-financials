@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logoPath from "@assets/Transparent Logo (Finalized)_1753125211752.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,11 +28,12 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">B</span>
-            </div>
-            <span className="text-xl font-bold text-teal-700">Breeze Financials</span>
+          <div className="flex items-center space-x-3">
+            <img 
+              src={logoPath} 
+              alt="Breeze Financials" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}

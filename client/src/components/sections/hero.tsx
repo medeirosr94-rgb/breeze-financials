@@ -83,10 +83,6 @@ export default function Hero() {
                   <span className="text-blue-500 mr-2 font-bold">G</span>
                   <span className="text-sm font-medium">4.9/5 Google Reviews</span>
                 </div>
-                <div className="flex items-center">
-                  <span className="text-green-500 mr-2 font-bold">BBB</span>
-                  <span className="text-sm font-medium">A+ Rating</span>
-                </div>
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-4">
                 <div className="bg-gray-100 px-3 py-1 rounded text-xs text-gray-600">

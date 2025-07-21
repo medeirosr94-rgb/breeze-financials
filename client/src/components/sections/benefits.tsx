@@ -44,7 +44,15 @@ export default function Benefits() {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
             You get the financial leadership your business needs to grow, without the full-time executive cost.
           </p>
-          <button className="text-teal-600 hover:text-teal-800 text-sm underline">
+          <button 
+            onClick={() => {
+              const faqSection = document.getElementById('faq');
+              if (faqSection) {
+                faqSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="text-teal-600 hover:text-teal-800 text-sm underline"
+          >
             What's a Fractional CFO? (Quick explainer)
           </button>
           

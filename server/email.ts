@@ -163,6 +163,6 @@ export async function sendLeadNotification(leadData: LeadData) {
     
   } catch (error) {
     console.error('❌ Email sending failed:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 }

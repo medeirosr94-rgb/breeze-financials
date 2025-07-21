@@ -12,7 +12,7 @@ const testimonials = [
     name: "Maria Rodriguez",
     company: "Restaurant Owner", 
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
-    content: "The cash flow planning alone has been game-changing. Rodrigo helped us navigate a critical growth period without cash flow stress.",
+    content: "The cash flow planning alone has been game-changing. The Breeze team helped us navigate a critical growth period without cash flow stress.",
     result: "Zero cash flow issues during expansion"
   },
   {

@@ -86,7 +86,7 @@ export default function FAQ() {
               onClick={() => window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min?month=2025-07', '_blank')}
               className="bg-teal-500 text-white px-6 py-3 rounded-full hover:bg-teal-600 transition-colors duration-200"
             >
-              Ask Rodrigo Directly
+              Ask Our CFO Team
             </button>
           </div>
         </div>

@@ -83,7 +83,7 @@ export default function FAQ() {
           <div className="text-center mt-8">
             <p className="text-gray-600 mb-4">Still have questions?</p>
             <button 
-              onClick={() => window.open('https://calendly.com/breeze-financials/intro-call', '_blank')}
+              onClick={() => window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min?month=2025-07', '_blank')}
               className="bg-teal-500 text-white px-6 py-3 rounded-full hover:bg-teal-600 transition-colors duration-200"
             >
               Ask Rodrigo Directly

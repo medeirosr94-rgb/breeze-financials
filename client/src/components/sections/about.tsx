@@ -3,8 +3,7 @@ import { GraduationCap, Building, TrendingUp, MapPin, Calendar } from "lucide-re
 
 export default function About() {
   const handleBookCall = () => {
-    // Open Calendly or similar booking widget
-    window.open('https://calendly.com/breeze-financials/intro-call', '_blank');
+    window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min?month=2025-07', '_blank');
   };
 
   return (

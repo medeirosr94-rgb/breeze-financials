@@ -88,7 +88,7 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-400">
               <li className="flex items-center">
                 <Mail className="mr-2 text-teal-400" size={16} />
-                <span>hello@breezefinancials.ca</span>
+                <span>rodrigo@breezefinancials.ca</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 text-teal-400" size={16} />

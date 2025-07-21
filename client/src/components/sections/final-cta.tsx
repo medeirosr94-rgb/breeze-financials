@@ -11,7 +11,7 @@ export default function FinalCTA() {
   };
 
   const handleBookCall = () => {
-    window.open('https://calendly.com/breeze-financials/intro-call', '_blank');
+    window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min?month=2025-07', '_blank');
   };
 
   return (

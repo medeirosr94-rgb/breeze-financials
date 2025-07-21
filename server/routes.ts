@@ -13,6 +13,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Here you could also integrate with email services like Mailgun, SendGrid, etc.
       // Example: await sendNotificationEmail(lead);
+      // For now, you can check the console logs or set up email integration
       
       res.json({ 
         success: true, 

@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 // Email configuration for GoDaddy SMTP
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtpout.secureserver.net', // GoDaddy SMTP server
     port: parseInt(process.env.SMTP_PORT || '465'),
     secure: true, // true for 465, false for other ports

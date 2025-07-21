@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertLeadSchema } from "@shared/schema";
+import { sendLeadNotification } from "./email";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -11,9 +12,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertLeadSchema.parse(req.body);
       const lead = await storage.createLead(validatedData);
       
-      // Here you could also integrate with email services like Mailgun, SendGrid, etc.
-      // Example: await sendNotificationEmail(lead);
-      // For now, you can check the console logs or set up email integration
+      // Send email notification
+      const emailResult = await sendLeadNotification({
+        name: validatedData.name,
+        email: validatedData.email,
+        businessName: validatedData.businessName,
+        phone: validatedData.phone,
+        source: 'Free Audit Form'
+      });
+      
+      if (!emailResult.success) {
+        console.warn('Email notification failed, but lead was saved:', emailResult.error);
+      }
       
       res.json({ 
         success: true, 
@@ -49,6 +59,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ...validatedData,
         source: "contact_form"
       });
+      
+      // Send email notification for contact form
+      const emailResult = await sendLeadNotification({
+        name: validatedData.name,
+        email: validatedData.email,
+        businessName: validatedData.businessName,
+        phone: validatedData.phone,
+        message: validatedData.message,
+        source: 'Contact Form'
+      });
+      
+      if (!emailResult.success) {
+        console.warn('Email notification failed, but contact was saved:', emailResult.error);
+      }
       
       res.json({ 
         success: true, 

@@ -1,0 +1,110 @@
+
+Updated Prompt for Designer/Developer
+Goal: Design a high-converting front-end landing page for Breeze Financials, focusing on trust and lead generation (free bookkeeping audit), but also introducing and selling the true value: Fractional CFO services for small businesses. Reference Breeze’s green/white branding, rounded elements, and minimalist style as seen on the current PDF/webpage.
+
+Key Elements:
+
+1. Header/Nav:
+
+Breeze Financials logo (left), links: Home, Why Breeze, Bookkeeping, Fractional CFO, About, Contact.
+
+Sticky and clean.
+
+2. Hero Section:
+
+Headline: “Start with a Free Bookkeeping Audit. Unlock CFO-Level Insights.”
+
+Subhead: “Get a personalized review from a finance expert and see how a Fractional CFO can transform your business.”
+
+Simple lead form (Name, Email, Business Name) with bold CTA: “Request Your Free Audit”
+
+Soft green/white wave or breeze background, calm and trustworthy feel.
+
+3. Social Proof & Trust:
+
+“Trusted by Toronto small businesses”
+
+Google Reviews, testimonials, association logos, etc.
+
+Quick FAQ or “No obligation. 100% confidential.”
+
+4. Value Ladder Section (Bookkeeping → CFO):
+
+Two visually distinct cards/sections:
+
+Bookkeeping: “Never worry about receipts or reconciliations again.”
+
+Fractional CFO: “Go beyond bookkeeping — get real financial strategy, forecasting, and business insight at a fraction of the cost.”
+
+Side-by-side or stacked for mobile.
+
+5. Benefits/Features of Fractional CFO:
+
+Clean, icon-based list:
+
+Strategic cash flow planning
+
+Monthly financial reviews
+
+Forecasting & scenario analysis
+
+Real-time business performance dashboards
+
+Expert guidance, on call
+
+6. Process / How It Works:
+
+3 easy steps:
+
+Request your free audit
+
+Meet your expert (Zoom or in-person)
+
+Get your audit + discover what Fractional CFO can do for you
+
+7. Testimonials & Results:
+
+Real reviews or placeholder with “We saved $X, got clarity on our business, and now we can finally sleep at night.”
+
+Include business owner names/photos if possible.
+
+8. About/Meet Your CFO:
+
+Short bio with headshot (“Hi, I’m Rodrigo — your future CFO. 10+ years in finance, here to help your business grow.”)
+
+9. Sticky/Floating CTA:
+
+“Request Free Audit” button always visible as you scroll.
+
+10. Footer:
+
+Contact info, socials, privacy, “Proudly serving Toronto and beyond.”
+
+Design Guidance:
+
+Use green as the accent color, plenty of whitespace, round and soft edges.
+
+Light, readable fonts with clear headings and sections.
+
+Use subtle breeze/wave motifs, nothing corporate or harsh.
+
+Extra trust ideas:
+
+Data privacy badge (“Your information is secure.”)
+
+Option to book a quick intro call (“Got questions? Let’s talk!”)
+
+Deliver as a React/Tailwind (or similar) page. Content blocks should be easy to swap out or edit.
+
+Make sure the flow is: free audit → “see what a CFO can do for you” → easy signup/contact.
+
+How to Emphasize Fractional CFO (Copy Examples)
+Mini-Headline:
+“What is a Fractional CFO? Get all the expertise, without the full-time cost.”
+
+Section Title:
+“Bookkeeping is just the start. Our real value: strategic financial leadership for your business.”
+
+Callout:
+“Already have a bookkeeper? See how a CFO-level view can take your business further.”
+

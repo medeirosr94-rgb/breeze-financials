@@ -30,22 +30,22 @@ export default function FinalCTA() {
           Start with your free bookkeeping audit and discover how a Fractional CFO can take your business to the next level.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
           <Button
             onClick={scrollToForm}
-            className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:scale-105"
+            className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:scale-105 w-full sm:w-auto min-w-0"
           >
-            <Calculator className="mr-2" size={20} />
-            Request Free Audit
+            <Calculator className="mr-2 flex-shrink-0" size={20} />
+            <span className="whitespace-nowrap">Request Free Audit</span>
           </Button>
-          <span className="text-teal-200">or</span>
+          <span className="text-teal-200 text-sm">or</span>
           <Button
             onClick={handleBookCall}
             variant="outline"
-            className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-200 hover:scale-105"
+            className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-200 hover:scale-105 w-full sm:w-auto min-w-0"
           >
-            <Phone className="mr-2" size={20} />
-            Book Instant 15-Min Call
+            <Phone className="mr-2 flex-shrink-0" size={20} />
+            <span className="whitespace-nowrap">Book Instant 15-Min Call</span>
           </Button>
         </div>
         

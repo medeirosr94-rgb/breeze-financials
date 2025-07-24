@@ -34,9 +34,9 @@ export default function Hero() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Left Column: Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left flex flex-col justify-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               You Get a <span className="text-teal-600">Free Bookkeeping Audit</span>. 
               Plus CFO-Level Insights.
@@ -96,7 +96,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Lead Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto lg:mx-0 animate-fadeInUp">
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto animate-fadeInUp">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Request Your Free Audit</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">

@@ -21,6 +21,7 @@ Preferred communication style: Simple, everyday language.
 ✓ **FAQ Section**: Comprehensive objection-handling with accordion design
 ✓ **Trust Signal Optimization**: Removed unverified credentials, kept authentic elements
 ✓ **Email Configuration**: rodrigomedeiros@breezefinancials.com with instant notifications
+✓ **Meta Pixel Integration**: Full Facebook tracking with conversion events (Jan 24, 2025)
 
 ## System Architecture
 
@@ -141,3 +142,19 @@ Preferred communication style: Simple, everyday language.
 - React Query for efficient data fetching and caching
 - Tailwind CSS purging for minimal bundle size
 - Express middleware for request logging and error handling
+
+## Marketing & Analytics Integration
+
+### Meta Pixel Implementation (January 2025)
+- **Pixel ID**: 1852541422141390
+- **Base Tracking**: PageView events automatically tracked on all pages
+- **Conversion Events**:
+  - Lead generation form submissions tracked as 'Lead' and 'SubmitApplication'
+  - Contact form submissions tracked as 'Contact'
+  - Calendly booking clicks tracked as 'Schedule'
+  - Section interactions tracked as 'ViewContent' with content names
+- **Implementation**: 
+  - Meta Pixel script in HTML head section
+  - TypeScript utility functions for event tracking
+  - Integrated with existing form submission hooks
+  - Tracking on all CTA interactions (floating CTA, final CTA, about section)

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { MetaPixelEvents } from "@/lib/meta-pixel";
 import type { InsertLead } from "@shared/schema";
 
 export function useFormSubmission() {
@@ -13,6 +14,10 @@ export function useFormSubmission() {
       return response.json();
     },
     onSuccess: (data) => {
+      // Track lead conversion in Meta Pixel
+      MetaPixelEvents.trackLead();
+      MetaPixelEvents.trackAuditRequest();
+      
       toast({
         title: "Success!",
         description: data.message || "We'll contact you within 24 hours to schedule your free audit.",
@@ -34,6 +39,9 @@ export function useFormSubmission() {
       return response.json();
     },
     onSuccess: (data) => {
+      // Track contact form submission in Meta Pixel
+      MetaPixelEvents.trackContact();
+      
       toast({
         title: "Message sent!",
         description: data.message || "We'll get back to you soon.",

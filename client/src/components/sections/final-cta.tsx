@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Calculator, Phone, Shield } from "lucide-react";
+import { MetaPixelEvents } from "@/lib/meta-pixel";
 
 export default function FinalCTA() {
   const scrollToForm = () => {
+    // Track form scroll interaction
+    MetaPixelEvents.trackSectionView('final-cta-form-scroll');
+    
     const form = document.querySelector('form');
     if (form) {
       form.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -11,6 +15,8 @@ export default function FinalCTA() {
   };
 
   const handleBookCall = () => {
+    // Track Calendly booking click from final CTA
+    MetaPixelEvents.trackCalendlyClick();
     window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min?month=2025-07', '_blank');
   };
 

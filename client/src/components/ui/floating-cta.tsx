@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Calculator } from "lucide-react";
+import { MetaPixelEvents } from "@/lib/meta-pixel";
 
 export default function FloatingCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,6 +17,9 @@ export default function FloatingCTA() {
   }, []);
 
   const scrollToForm = () => {
+    // Track floating CTA form scroll interaction
+    MetaPixelEvents.trackSectionView('floating-cta-form-scroll');
+    
     const form = document.querySelector('form');
     if (form) {
       form.scrollIntoView({ behavior: "smooth", block: "center" });

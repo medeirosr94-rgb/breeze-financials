@@ -30,23 +30,24 @@ export default function FinalCTA() {
           Start with your free bookkeeping audit and discover how a Fractional CFO can take your business to the next level.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Button
             onClick={scrollToForm}
-            className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:scale-105 w-full sm:w-auto min-w-0"
+            size="lg"
+            className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:scale-105"
           >
-            <Calculator className="mr-2 flex-shrink-0" size={20} />
-            <span className="whitespace-nowrap">Request Free Audit</span>
+            <Calculator className="mr-2" size={20} />
+            Request Free Audit
           </Button>
-          <span className="text-teal-200 text-sm">or</span>
-          <Button
+          <span className="text-teal-200 text-lg font-medium">or</span>
+          <button
             onClick={handleBookCall}
-            variant="outline"
-            className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-200 hover:scale-105 w-full sm:w-auto min-w-0"
+            className="inline-flex items-center justify-center border-2 border-white text-white bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-200 hover:scale-105 text-base"
+            style={{ color: 'white', borderColor: 'white' }}
           >
-            <Phone className="mr-2 flex-shrink-0" size={20} />
-            <span className="whitespace-nowrap">Book Instant 15-Min Call</span>
-          </Button>
+            <Phone className="mr-2" size={20} />
+            Book Instant 15-Min Call
+          </button>
         </div>
         
         <p className="text-sm text-teal-200 mt-6">

@@ -33,10 +33,10 @@ export default function Hero() {
         <div className="absolute bottom-20 left-1/3 w-20 h-20 bg-teal-100 rounded-full animate-wave" style={{animationDelay: '2s'}}></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+      <div className="container mx-auto px-4 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center justify-center max-w-6xl mx-auto">
           {/* Left Column: Content */}
-          <div className="text-center lg:text-left flex flex-col justify-center">
+          <div className="text-center lg:text-left flex flex-col justify-center space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               You Get a <span className="text-teal-600">Free Bookkeeping Audit</span>. 
               Plus CFO-Level Insights.

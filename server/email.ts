@@ -17,6 +17,7 @@ interface LeadData {
   name: string;
   email: string;
   businessName?: string;
+  businessType?: string;
   phone?: string;
   message?: string;
   source?: string;
@@ -55,6 +56,12 @@ export async function sendLeadNotification(leadData: LeadData) {
               <tr>
                 <td style="padding: 8px 0; color: #6b7280; font-weight: bold;">Business:</td>
                 <td style="padding: 8px 0; color: #1f2937;">${leadData.businessName}</td>
+              </tr>
+              ` : ''}
+              ${leadData.businessType ? `
+              <tr>
+                <td style="padding: 8px 0; color: #6b7280; font-weight: bold;">Industry:</td>
+                <td style="padding: 8px 0; color: #1f2937;">${leadData.businessType}</td>
               </tr>
               ` : ''}
               ${leadData.phone ? `

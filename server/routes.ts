@@ -24,6 +24,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         name: validatedData.name,
         email: validatedData.email,
         businessName: validatedData.businessName,
+        businessType: validatedData.businessType,
         phone: validatedData.phone,
         source: 'Free Audit Form'
       }).catch(error => {
@@ -72,6 +73,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         name: validatedData.name,
         email: validatedData.email,
         businessName: validatedData.businessName,
+        businessType: validatedData.businessType,
         phone: validatedData.phone,
         message: validatedData.message,
         source: 'Contact Form'

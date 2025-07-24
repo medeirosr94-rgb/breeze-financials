@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Shield, Clock, Star, Phone, CheckCircle, TrendingUp } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Shield, Clock, Star, Phone, CheckCircle, TrendingUp, MapPin, AlertCircle } from "lucide-react";
 import { useFormSubmission } from "@/hooks/use-form-submission";
 import { MetaPixelEvents } from "@/lib/meta-pixel";
 
@@ -10,7 +11,8 @@ export default function AuditLandingPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    businessName: ""
+    businessName: "",
+    businessType: ""
   });
 
   const { submitLead, isLoading } = useFormSubmission();
@@ -19,7 +21,7 @@ export default function AuditLandingPage() {
     e.preventDefault();
     try {
       await submitLead(formData);
-      setFormData({ name: "", email: "", businessName: "" });
+      setFormData({ name: "", email: "", businessName: "", businessType: "" });
     } catch (error) {
       // Error is handled by the mutation hook
     }
@@ -45,18 +47,37 @@ export default function AuditLandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 px-4">
+      <section className="py-8 md:py-16 px-4">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
               Get Your <span className="text-teal-600">Free Bookkeeping Audit</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
               Discover hidden opportunities in your business finances. Our CFO experts will review your books and show you exactly how to save money and boost profits.
             </p>
             
+            {/* Urgency Banner */}
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 max-w-md mx-auto">
+              <div className="flex items-center justify-center space-x-2 text-red-700">
+                <AlertCircle size={20} />
+                <span className="font-semibold">Limited: Only 3 spots left this week</span>
+              </div>
+            </div>
+
+            {/* Mobile CTA Above Fold */}
+            <div className="block md:hidden mb-8">
+              <Button 
+                onClick={() => document.getElementById('audit-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full max-w-sm bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-200 text-lg"
+              >
+                Get My Free Audit Now
+                <TrendingUp className="ml-2" size={20} />
+              </Button>
+            </div>
+            
             {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mb-8">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8">
               <div className="flex items-center space-x-2">
                 <Shield className="text-teal-500" size={20} />
                 <span className="text-sm text-gray-600">100% Confidential</span>
@@ -66,7 +87,11 @@ export default function AuditLandingPage() {
                 <span className="text-sm text-gray-600">No Obligation</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Star className="text-yellow-500" size={20} />
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
+                  ))}
+                </div>
                 <span className="text-sm text-gray-600">4.9/5 Google Reviews</span>
               </div>
             </div>
@@ -126,13 +151,16 @@ export default function AuditLandingPage() {
             </div>
 
             {/* Right Column: Form */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            <div id="audit-form" className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Request Your Free Audit</h3>
-                <p className="text-gray-600">Takes 30 seconds • No spam ever</p>
+                <div className="flex items-center justify-center mb-2">
+                  <Shield className="text-teal-500 mr-2" size={24} />
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Request Your Free Audit</h3>
+                </div>
+                <p className="text-gray-600">Takes 30 seconds • 100% secure • No spam ever</p>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <Label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Name
@@ -178,10 +206,37 @@ export default function AuditLandingPage() {
                   />
                 </div>
 
+                <div>
+                  <Label htmlFor="businessType" className="block text-sm font-medium text-gray-700 mb-2">
+                    Business Type
+                  </Label>
+                  <Select value={formData.businessType} onValueChange={(value) => handleInputChange('businessType', value)}>
+                    <SelectTrigger className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+                      <SelectValue placeholder="Select your business type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="restaurant">Restaurant/Cafe</SelectItem>
+                      <SelectItem value="retail">Retail Store</SelectItem>
+                      <SelectItem value="contractor">Contractor/Construction</SelectItem>
+                      <SelectItem value="ecommerce">E-commerce</SelectItem>
+                      <SelectItem value="professional">Professional Services</SelectItem>
+                      <SelectItem value="tech">Tech/Software</SelectItem>
+                      <SelectItem value="healthcare">Healthcare</SelectItem>
+                      <SelectItem value="fitness">Fitness/Wellness</SelectItem>
+                      <SelectItem value="beauty">Beauty/Salon</SelectItem>
+                      <SelectItem value="automotive">Automotive</SelectItem>
+                      <SelectItem value="real-estate">Real Estate</SelectItem>
+                      <SelectItem value="consulting">Consulting</SelectItem>
+                      <SelectItem value="manufacturing">Manufacturing</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <Button
                   type="submit"
                   disabled={isLoading || !formData.name || !formData.email || !formData.businessName}
-                  className="w-full bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 text-lg"
+                  className="w-full bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 text-lg shadow-lg hover:shadow-xl"
                 >
                   {isLoading ? (
                     <div className="flex items-center justify-center">
@@ -190,7 +245,7 @@ export default function AuditLandingPage() {
                     </div>
                   ) : (
                     <>
-                      Get My Free Audit
+                      Get My Free Audit Now
                       <TrendingUp className="ml-2" size={20} />
                     </>
                   )}
@@ -264,13 +319,17 @@ export default function AuditLandingPage() {
         </div>
       </section>
 
-      {/* Simple Footer */}
+      {/* Enhanced Footer */}
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="text-xl font-bold text-teal-400 mb-2">Breeze Financials</div>
-          <p className="text-gray-400 text-sm mb-4">
-            Professional Bookkeeping & Fractional CFO Services • Toronto & GTA
+          <p className="text-gray-400 text-sm mb-2">
+            Professional Bookkeeping & Fractional CFO Services
           </p>
+          <div className="flex items-center justify-center space-x-2 text-teal-400 mb-4">
+            <MapPin size={16} />
+            <span className="text-sm font-medium">Proudly serving small businesses across Toronto & the GTA</span>
+          </div>
           <div className="flex items-center justify-center space-x-4 text-sm text-gray-400">
             <span>CPA Certified</span>
             <span>•</span>

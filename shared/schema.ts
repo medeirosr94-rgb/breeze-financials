@@ -13,6 +13,7 @@ export const leads = pgTable("leads", {
   name: text("name").notNull(),
   email: text("email").notNull(),
   businessName: text("business_name").notNull(),
+  businessType: text("business_type"),
   phone: text("phone"),
   message: text("message"),
   source: text("source").default("landing_page"),

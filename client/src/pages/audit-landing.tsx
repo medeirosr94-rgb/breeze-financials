@@ -17,8 +17,12 @@ export default function AuditLandingPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await submitLead(formData);
-    setFormData({ name: "", email: "", businessName: "" });
+    try {
+      await submitLead(formData);
+      setFormData({ name: "", email: "", businessName: "" });
+    } catch (error) {
+      // Error is handled by the mutation hook
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -176,11 +180,20 @@ export default function AuditLandingPage() {
 
                 <Button
                   type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-200 text-lg"
+                  disabled={isLoading || !formData.name || !formData.email || !formData.businessName}
+                  className="w-full bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 text-lg"
                 >
-                  {isLoading ? 'Sending...' : 'Get My Free Audit'}
-                  <TrendingUp className="ml-2" size={20} />
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </div>
+                  ) : (
+                    <>
+                      Get My Free Audit
+                      <TrendingUp className="ml-2" size={20} />
+                    </>
+                  )}
                 </Button>
               </form>
 

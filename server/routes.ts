@@ -12,24 +12,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertLeadSchema.parse(req.body);
       const lead = await storage.createLead(validatedData);
       
-      // Send email notification
-      const emailResult = await sendLeadNotification({
-        name: validatedData.name,
-        email: validatedData.email,
-        businessName: validatedData.businessName,
-        phone: validatedData.phone,
-        source: 'Free Audit Form'
-      });
-      
-      if (!emailResult.success) {
-        console.warn('Email notification failed, but lead was saved:', emailResult.error);
-      }
-      
+      // Send immediate response to user - don't wait for email
       res.json({ 
         success: true, 
         message: "Thank you! We'll contact you within 24 hours to schedule your free audit.",
         leadId: lead.id 
       });
+      
+      // Send email notification asynchronously (fire and forget)
+      sendLeadNotification({
+        name: validatedData.name,
+        email: validatedData.email,
+        businessName: validatedData.businessName,
+        phone: validatedData.phone,
+        source: 'Free Audit Form'
+      }).catch(error => {
+        console.warn('Email notification failed, but lead was saved:', error);
+      });
+      
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({ 
@@ -60,24 +60,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
         source: "contact_form"
       });
       
-      // Send email notification for contact form
-      const emailResult = await sendLeadNotification({
+      // Send immediate response to user
+      res.json({ 
+        success: true, 
+        message: "Thank you for your message! We'll get back to you soon.",
+        leadId: lead.id 
+      });
+      
+      // Send email notification asynchronously (fire and forget)
+      sendLeadNotification({
         name: validatedData.name,
         email: validatedData.email,
         businessName: validatedData.businessName,
         phone: validatedData.phone,
         message: validatedData.message,
         source: 'Contact Form'
-      });
-      
-      if (!emailResult.success) {
-        console.warn('Email notification failed, but contact was saved:', emailResult.error);
-      }
-      
-      res.json({ 
-        success: true, 
-        message: "Thank you for your message! We'll get back to you soon.",
-        leadId: lead.id 
+      }).catch(error => {
+        console.warn('Email notification failed, but contact was saved:', error);
       });
     } catch (error) {
       if (error instanceof z.ZodError) {

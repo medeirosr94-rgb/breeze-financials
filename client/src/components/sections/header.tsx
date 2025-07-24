@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logoPath from "@assets/Transparent Logo (Finalized)_1753125211752.png";
+import logoPath from "@assets/Transparent Logo (Finalized)_1753319571910.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

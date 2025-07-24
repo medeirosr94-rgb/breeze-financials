@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Shield, Clock, Star, Phone, CheckCircle, TrendingUp, MapPin, AlertCircle } from "lucide-react";
 import { useFormSubmission } from "@/hooks/use-form-submission";
 import { MetaPixelEvents } from "@/lib/meta-pixel";
+import logoPath from "@assets/Transparent Logo (Finalized)_1753319571910.png";
 
 export default function AuditLandingPage() {
   const [formData, setFormData] = useState({
@@ -37,7 +38,11 @@ export default function AuditLandingPage() {
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-teal-600">Breeze Financials</div>
+            <img 
+              src={logoPath} 
+              alt="Breeze Financials Logo" 
+              className="h-8 md:h-10 w-auto"
+            />
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Phone size={16} />
               <span>Toronto & GTA</span>
@@ -322,7 +327,11 @@ export default function AuditLandingPage() {
       {/* Enhanced Footer */}
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <div className="text-xl font-bold text-teal-400 mb-2">Breeze Financials</div>
+          <img 
+            src={logoPath} 
+            alt="Breeze Financials Logo" 
+            className="h-8 w-auto mx-auto mb-2 brightness-0 invert"
+          />
           <p className="text-gray-400 text-sm mb-2">
             Professional Bookkeeping & Fractional CFO Services
           </p>

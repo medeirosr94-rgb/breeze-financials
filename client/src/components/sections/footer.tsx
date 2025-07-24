@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
-import logoPath from "@assets/Transparent Logo (Finalized)_1753125211752.png";
+import logoPath from "@assets/Transparent Logo (Finalized)_1753319571910.png";
 
 export default function Footer() {
   const scrollToSection = (id: string) => {

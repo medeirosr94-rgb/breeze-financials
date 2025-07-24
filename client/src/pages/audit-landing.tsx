@@ -1,0 +1,272 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Shield, Clock, Star, Phone, CheckCircle, TrendingUp } from "lucide-react";
+import { useFormSubmission } from "@/hooks/use-form-submission";
+import { MetaPixelEvents } from "@/lib/meta-pixel";
+
+export default function AuditLandingPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    businessName: ""
+  });
+
+  const { submitLead, isLoading } = useFormSubmission();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await submitLead(formData);
+    setFormData({ name: "", email: "", businessName: "" });
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-teal-50">
+      {/* Simple Header */}
+      <header className="bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="text-2xl font-bold text-teal-600">Breeze Financials</div>
+            <div className="flex items-center space-x-2 text-sm text-gray-600">
+              <Phone size={16} />
+              <span>Toronto & GTA</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              Get Your <span className="text-teal-600">Free Bookkeeping Audit</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+              Discover hidden opportunities in your business finances. Our CFO experts will review your books and show you exactly how to save money and boost profits.
+            </p>
+            
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mb-8">
+              <div className="flex items-center space-x-2">
+                <Shield className="text-teal-500" size={20} />
+                <span className="text-sm text-gray-600">100% Confidential</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Clock className="text-teal-500" size={20} />
+                <span className="text-sm text-gray-600">No Obligation</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Star className="text-yellow-500" size={20} />
+                <span className="text-sm text-gray-600">4.9/5 Google Reviews</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Benefits */}
+            <div className="space-y-8">
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-teal-100">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">What You'll Get (Free):</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="text-teal-500 mt-1 flex-shrink-0" size={20} />
+                    <div>
+                      <div className="font-semibold">Complete Financial Review</div>
+                      <div className="text-gray-600 text-sm">We'll analyze your books, cash flow, and expenses</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="text-teal-500 mt-1 flex-shrink-0" size={20} />
+                    <div>
+                      <div className="font-semibold">Money-Saving Opportunities</div>
+                      <div className="text-gray-600 text-sm">Find hidden costs and tax deductions you're missing</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="text-teal-500 mt-1 flex-shrink-0" size={20} />
+                    <div>
+                      <div className="font-semibold">CFO-Level Insights</div>
+                      <div className="text-gray-600 text-sm">Strategic recommendations to grow your business</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="text-teal-500 mt-1 flex-shrink-0" size={20} />
+                    <div>
+                      <div className="font-semibold">Action Plan</div>
+                      <div className="text-gray-600 text-sm">Clear next steps to improve your finances</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Results */}
+              <div className="bg-teal-500 text-white rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-4">Typical Results:</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold mb-1">$25K+</div>
+                    <div className="text-teal-100 text-sm">Average First Year Savings</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold mb-1">89%</div>
+                    <div className="text-teal-100 text-sm">See ROI in 3 Months</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Form */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Request Your Free Audit</h3>
+                <p className="text-gray-600">Takes 30 seconds • No spam ever</p>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Name
+                  </Label>
+                  <Input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="John Doe"
+                  />
+                </div>
+                
+                <div>
+                  <Label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </Label>
+                  <Input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="john@company.com"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="businessName" className="block text-sm font-medium text-gray-700 mb-2">
+                    Business Name
+                  </Label>
+                  <Input
+                    type="text"
+                    id="businessName"
+                    value={formData.businessName}
+                    onChange={(e) => handleInputChange('businessName', e.target.value)}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="Your Company Inc."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-200 text-lg"
+                >
+                  {isLoading ? 'Sending...' : 'Get My Free Audit'}
+                  <TrendingUp className="ml-2" size={20} />
+                </Button>
+              </form>
+
+              <div className="mt-6 text-center">
+                <div className="flex items-center justify-center space-x-1 text-sm text-gray-500 mb-2">
+                  <Shield size={16} />
+                  <span>Your information is 100% secure and confidential</span>
+                </div>
+                <p className="text-xs text-gray-400">
+                  We'll contact you within 24 hours to schedule your audit
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8">Trusted by 50+ Toronto Businesses</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center justify-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={20} fill="currentColor" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 mb-4 italic">
+                "The audit found $18K in savings we didn't know existed. Best decision we made this year."
+              </p>
+              <div className="font-semibold">Sarah M.</div>
+              <div className="text-sm text-gray-500">Tech Startup CEO</div>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center justify-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={20} fill="currentColor" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 mb-4 italic">
+                "Professional, thorough, and found issues our previous accountant missed."
+              </p>
+              <div className="font-semibold">Mike R.</div>
+              <div className="text-sm text-gray-500">Restaurant Owner</div>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center justify-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={20} fill="currentColor" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 mb-4 italic">
+                "Clear insights and actionable recommendations. Highly recommend."
+              </p>
+              <div className="font-semibold">Jennifer L.</div>
+              <div className="text-sm text-gray-500">Construction Company</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Simple Footer */}
+      <footer className="bg-gray-900 text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <div className="text-xl font-bold text-teal-400 mb-2">Breeze Financials</div>
+          <p className="text-gray-400 text-sm mb-4">
+            Professional Bookkeeping & Fractional CFO Services • Toronto & GTA
+          </p>
+          <div className="flex items-center justify-center space-x-4 text-sm text-gray-400">
+            <span>CPA Certified</span>
+            <span>•</span>
+            <span>QuickBooks ProAdvisor</span>
+            <span>•</span>
+            <span>100% Confidential</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

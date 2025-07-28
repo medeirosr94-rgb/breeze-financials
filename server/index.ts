@@ -39,23 +39,42 @@ app.use((req, res, next) => {
 
 // Setup reverse proxy for client portal
 app.use('/clientportal', createProxyMiddleware({
-  target: 'https://workspace.Rodrigomedeir12.repl.co',
+  target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app',
   changeOrigin: true,
+  timeout: 30000, // 30 second timeout
+  proxyTimeout: 30000,
   pathRewrite: {
     '^/clientportal': '', // Remove /clientportal from the path when forwarding
   },
   onProxyReq: (proxyReq, req, res) => {
     // Set headers for proper proxying
-    proxyReq.setHeader('Host', 'workspace.Rodrigomedeir12.repl.co');
+    proxyReq.setHeader('Host', 'breeze-client-manager-Rodrigomedeir12.replit.app');
     proxyReq.setHeader('X-Forwarded-Host', req.headers.host || '');
     proxyReq.setHeader('X-Forwarded-Proto', req.protocol);
+    proxyReq.setHeader('X-Real-IP', req.connection.remoteAddress || '');
+    console.log(`Proxying request to: ${req.url} -> ${proxyReq.path}`);
+  },
+  onProxyRes: (proxyRes, req, res) => {
+    console.log(`Proxy response: ${proxyRes.statusCode} for ${req.url}`);
   },
   onError: (err, req, res) => {
     console.error('Proxy Error:', err.message);
-    res.status(500).json({ 
-      error: 'Client Portal Unavailable', 
-      message: 'The client portal is temporarily unavailable. Please try again later.' 
-    });
+    console.error('Request URL:', req.url);
+    
+    // Check if response was already sent
+    if (!res.headersSent) {
+      res.status(503).send(`
+        <html>
+          <head><title>Client Portal Unavailable</title></head>
+          <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+            <h1>Client Portal Temporarily Unavailable</h1>
+            <p>We're experiencing technical difficulties with the client portal.</p>
+            <p>Please try again in a few minutes or contact support.</p>
+            <a href="/" style="color: #14b8a6;">← Return to Main Site</a>
+          </body>
+        </html>
+      `);
+    }
   },
   logLevel: 'info',
   // WebSocket support for development

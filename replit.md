@@ -46,7 +46,7 @@ Preferred communication style: Simple, everyday language.
 - Request logging middleware for API monitoring
 
 ### Proxy Configuration
-- **Client Portal Proxy**: `/clientportal` routes proxy to `https://workspace.Rodrigomedeir12.repl.co`
+- **Client Portal Proxy**: `/clientportal` routes proxy to `https://breeze-client-manager-Rodrigomedeir12.replit.app`
 - **Path Rewriting**: Removes `/clientportal` prefix when forwarding requests
 - **WebSocket Support**: Enabled for development hot reloading
 - **Error Handling**: Graceful fallback when client portal is unavailable

@@ -37,22 +37,28 @@ app.use((req, res, next) => {
   next();
 });
 
-// Setup reverse proxy for client portal (must be after specific routes)
-app.use('/clientportal', createProxyMiddleware({
-  target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app',
+// Handle root clientportal access (without trailing slash) - redirect to with slash
+app.get('/clientportal', (req, res) => {
+  console.log('[REDIRECT] /clientportal -> /clientportal/');
+  res.redirect(301, '/clientportal/');
+});
+
+// Setup reverse proxy for client portal (matches production nginx config)
+app.use('/clientportal/', createProxyMiddleware({
+  target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app/',
   changeOrigin: true,
-  timeout: 10000, // Reduced to 10 seconds
-  proxyTimeout: 10000,
-  pathRewrite: {
-    '^/clientportal': '', // Remove /clientportal from the path when forwarding
-  },
+  timeout: 60000, // Match nginx timeout
+  proxyTimeout: 60000,
+  // No path rewrite - keep full path like nginx config
   onProxyReq: (proxyReq, req, res) => {
-    // Set headers for proper proxying
+    // Match nginx headers exactly
     proxyReq.setHeader('Host', 'breeze-client-manager-Rodrigomedeir12.replit.app');
-    proxyReq.setHeader('X-Forwarded-Host', req.headers.host || '');
+    proxyReq.setHeader('X-Real-IP', req.connection.remoteAddress || req.ip || '');
+    proxyReq.setHeader('X-Forwarded-For', req.headers['x-forwarded-for'] || req.connection.remoteAddress || '');
     proxyReq.setHeader('X-Forwarded-Proto', req.protocol);
-    proxyReq.setHeader('X-Real-IP', req.connection.remoteAddress || '');
-    console.log(`[PROXY] Proxying request: ${req.method} ${req.url} -> https://breeze-client-manager-Rodrigomedeir12.replit.app${proxyReq.path}`);
+    proxyReq.setHeader('X-Forwarded-Host', req.headers.host || '');
+    proxyReq.setHeader('X-Original-URI', req.originalUrl);
+    console.log(`[PROXY] ${req.method} ${req.url} -> https://breeze-client-manager-Rodrigomedeir12.replit.app${proxyReq.path}`);
   },
   onProxyRes: (proxyRes, req, res) => {
     console.log(`Proxy response: ${proxyRes.statusCode} for ${req.url}`);
@@ -83,7 +89,8 @@ app.use('/clientportal', createProxyMiddleware({
               <p>The client portal server is currently not responding.</p>
               <div class="status">
                 <strong>Target Server:</strong> breeze-client-manager-Rodrigomedeir12.replit.app<br>
-                <strong>Error:</strong> ${err.message || 'Connection timeout'}
+                <strong>Error:</strong> ${err.message || 'Connection timeout'}<br>
+                <strong>URL:</strong> ${req.url}
               </div>
               <p>This usually means the Replit application needs to be started.</p>
               <p>Please contact support or try again in a few minutes.</p>

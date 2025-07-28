@@ -25,6 +25,7 @@ Preferred communication style: Simple, everyday language.
 ✓ **Instagram Landing Page**: Dedicated `/audit` page optimized for Instagram ads with mobile-first design
 ✓ **Logo Integration**: Professional Breeze Financials logo throughout all pages
 ✓ **Client Portal Proxy**: Reverse proxy setup for `/clientportal` routing to separate Replit application
+✓ **Proxy Configuration Update**: Aligned development proxy with production nginx config for consistent behavior
 
 ## System Architecture
 
@@ -46,10 +47,12 @@ Preferred communication style: Simple, everyday language.
 - Request logging middleware for API monitoring
 
 ### Proxy Configuration
-- **Client Portal Proxy**: `/clientportal` routes proxy to `https://breeze-client-manager-Rodrigomedeir12.replit.app`
-- **Path Rewriting**: Removes `/clientportal` prefix when forwarding requests
+- **Client Portal Proxy**: `/clientportal/` routes proxy to `https://breeze-client-manager-Rodrigomedeir12.replit.app/`
+- **Path Handling**: Preserves full path (matches production nginx configuration)
+- **Redirect Handling**: `/clientportal` redirects to `/clientportal/` (301 redirect)
 - **WebSocket Support**: Enabled for development hot reloading
-- **Error Handling**: Graceful fallback when client portal is unavailable
+- **Error Handling**: Graceful fallback with detailed error page when client portal is unavailable
+- **Header Matching**: Development proxy headers align with production nginx setup
 
 ### Styling and Design System
 - **Tailwind CSS** with custom CSS variables for theming

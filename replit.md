@@ -22,6 +22,9 @@ Preferred communication style: Simple, everyday language.
 ✓ **Trust Signal Optimization**: Removed unverified credentials, kept authentic elements
 ✓ **Email Configuration**: rodrigomedeiros@breezefinancials.com with instant notifications
 ✓ **Meta Pixel Integration**: Full Facebook tracking with conversion events (Jan 24, 2025)
+✓ **Instagram Landing Page**: Dedicated `/audit` page optimized for Instagram ads with mobile-first design
+✓ **Logo Integration**: Professional Breeze Financials logo throughout all pages
+✓ **Client Portal Proxy**: Reverse proxy setup for `/clientportal` routing to separate Replit application
 
 ## System Architecture
 
@@ -37,9 +40,16 @@ Preferred communication style: Simple, everyday language.
 ### Backend Architecture
 - **Express.js** server with TypeScript
 - **Drizzle ORM** for database operations and type-safe queries
+- **http-proxy-middleware** for client portal reverse proxy functionality
 - RESTful API design with JSON responses
 - Centralized error handling middleware
 - Request logging middleware for API monitoring
+
+### Proxy Configuration
+- **Client Portal Proxy**: `/clientportal` routes proxy to `https://workspace.Rodrigomedeir12.repl.co`
+- **Path Rewriting**: Removes `/clientportal` prefix when forwarding requests
+- **WebSocket Support**: Enabled for development hot reloading
+- **Error Handling**: Graceful fallback when client portal is unavailable
 
 ### Styling and Design System
 - **Tailwind CSS** with custom CSS variables for theming

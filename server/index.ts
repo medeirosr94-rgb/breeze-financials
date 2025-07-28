@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import { createProxyMiddleware } from 'http-proxy-middleware';
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
@@ -35,6 +36,31 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// Setup reverse proxy for client portal
+app.use('/clientportal', createProxyMiddleware({
+  target: 'https://workspace.Rodrigomedeir12.repl.co',
+  changeOrigin: true,
+  pathRewrite: {
+    '^/clientportal': '', // Remove /clientportal from the path when forwarding
+  },
+  onProxyReq: (proxyReq, req, res) => {
+    // Set headers for proper proxying
+    proxyReq.setHeader('Host', 'workspace.Rodrigomedeir12.repl.co');
+    proxyReq.setHeader('X-Forwarded-Host', req.headers.host || '');
+    proxyReq.setHeader('X-Forwarded-Proto', req.protocol);
+  },
+  onError: (err, req, res) => {
+    console.error('Proxy Error:', err.message);
+    res.status(500).json({ 
+      error: 'Client Portal Unavailable', 
+      message: 'The client portal is temporarily unavailable. Please try again later.' 
+    });
+  },
+  logLevel: 'info',
+  // WebSocket support for development
+  ws: true,
+}));
 
 (async () => {
   const server = await registerRoutes(app);

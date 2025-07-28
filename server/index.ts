@@ -1,5 +1,4 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { createProxyMiddleware } from 'http-proxy-middleware';
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
@@ -46,16 +45,6 @@ app.get('/clientportal', (req, res) => {
 app.get('/clientportal/', (req, res) => {
   console.log(`[CLIENT PORTAL] Redirecting to: https://breeze-client-manager-Rodrigomedeir12.replit.app`);
   res.redirect(301, 'https://breeze-client-manager-Rodrigomedeir12.replit.app');
-});
-
-// Add a status check endpoint for the client portal
-app.get('/api/clientportal-status', (req, res) => {
-  res.json({
-    status: 'proxy_configured',
-    target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app',
-    message: 'Client portal proxy is configured. Target server status unknown.',
-    instructions: 'Ensure the target Replit app is running at: https://breeze-client-manager-Rodrigomedeir12.replit.app'
-  });
 });
 
 (async () => {

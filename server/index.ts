@@ -37,33 +37,27 @@ app.use((req, res, next) => {
   next();
 });
 
-// Handle root clientportal access (without trailing slash) - redirect to with slash
-app.get('/clientportal', (req, res) => {
-  console.log('[REDIRECT] /clientportal -> /clientportal/');
-  res.redirect(301, '/clientportal/');
-});
-
-// Setup reverse proxy for client portal (matches production nginx config)
+// Setup reverse proxy for client portal BEFORE other routes (matches production nginx config)
 app.use('/clientportal/', createProxyMiddleware({
   target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app/',
   changeOrigin: true,
   timeout: 60000, // Match nginx timeout
   proxyTimeout: 60000,
   // No path rewrite - keep full path like nginx config
-  onProxyReq: (proxyReq, req, res) => {
+  onProxyReq: (proxyReq: any, req: any, res: any) => {
     // Match nginx headers exactly
     proxyReq.setHeader('Host', 'breeze-client-manager-Rodrigomedeir12.replit.app');
-    proxyReq.setHeader('X-Real-IP', req.connection.remoteAddress || req.ip || '');
-    proxyReq.setHeader('X-Forwarded-For', req.headers['x-forwarded-for'] || req.connection.remoteAddress || '');
+    proxyReq.setHeader('X-Real-IP', req.connection?.remoteAddress || req.ip || '');
+    proxyReq.setHeader('X-Forwarded-For', req.headers['x-forwarded-for'] || req.connection?.remoteAddress || '');
     proxyReq.setHeader('X-Forwarded-Proto', req.protocol);
     proxyReq.setHeader('X-Forwarded-Host', req.headers.host || '');
     proxyReq.setHeader('X-Original-URI', req.originalUrl);
     console.log(`[PROXY] ${req.method} ${req.url} -> https://breeze-client-manager-Rodrigomedeir12.replit.app${proxyReq.path}`);
   },
-  onProxyRes: (proxyRes, req, res) => {
+  onProxyRes: (proxyRes: any, req: any, res: any) => {
     console.log(`Proxy response: ${proxyRes.statusCode} for ${req.url}`);
   },
-  onError: (err, req, res) => {
+  onError: (err: any, req: any, res: any) => {
     console.error('Proxy Error:', err.message);
     console.error('Request URL:', req.url);
     
@@ -105,6 +99,12 @@ app.use('/clientportal/', createProxyMiddleware({
   // WebSocket support for development
   ws: true,
 }));
+
+// Handle root clientportal access (without trailing slash) - redirect to with slash
+app.get('/clientportal', (req, res) => {
+  console.log('[REDIRECT] /clientportal -> /clientportal/');
+  res.redirect(301, '/clientportal/');
+});
 
 // Add a status check endpoint for the client portal
 app.get('/api/clientportal-status', (req, res) => {

@@ -37,73 +37,15 @@ app.use((req, res, next) => {
   next();
 });
 
-// Setup reverse proxy for client portal BEFORE other routes (matches production nginx config)
-app.use('/clientportal/', createProxyMiddleware({
-  target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app/',
-  changeOrigin: true,
-  timeout: 60000, // Match nginx timeout
-  proxyTimeout: 60000,
-  // No path rewrite - keep full path like nginx config
-  onProxyReq: (proxyReq: any, req: any, res: any) => {
-    // Match nginx headers exactly
-    proxyReq.setHeader('Host', 'breeze-client-manager-Rodrigomedeir12.replit.app');
-    proxyReq.setHeader('X-Real-IP', req.connection?.remoteAddress || req.ip || '');
-    proxyReq.setHeader('X-Forwarded-For', req.headers['x-forwarded-for'] || req.connection?.remoteAddress || '');
-    proxyReq.setHeader('X-Forwarded-Proto', req.protocol);
-    proxyReq.setHeader('X-Forwarded-Host', req.headers.host || '');
-    proxyReq.setHeader('X-Original-URI', req.originalUrl);
-    console.log(`[PROXY] ${req.method} ${req.url} -> https://breeze-client-manager-Rodrigomedeir12.replit.app${proxyReq.path}`);
-  },
-  onProxyRes: (proxyRes: any, req: any, res: any) => {
-    console.log(`Proxy response: ${proxyRes.statusCode} for ${req.url}`);
-  },
-  onError: (err: any, req: any, res: any) => {
-    console.error('Proxy Error:', err.message);
-    console.error('Request URL:', req.url);
-    
-    // Check if response was already sent
-    if (!res.headersSent) {
-      res.status(503).send(`
-        <html>
-          <head>
-            <title>Client Portal Unavailable</title>
-            <style>
-              body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f9f9f9; }
-              .container { max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-              h1 { color: #dc2626; margin-bottom: 20px; }
-              p { color: #666; margin-bottom: 15px; }
-              .status { background: #fef2f2; border: 1px solid #fecaca; padding: 15px; border-radius: 6px; margin: 20px 0; }
-              a { color: #14b8a6; text-decoration: none; font-weight: bold; }
-              a:hover { text-decoration: underline; }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <h1>🔧 Client Portal Unavailable</h1>
-              <p>The client portal server is currently not responding.</p>
-              <div class="status">
-                <strong>Target Server:</strong> breeze-client-manager-Rodrigomedeir12.replit.app<br>
-                <strong>Error:</strong> ${err.message || 'Connection timeout'}<br>
-                <strong>URL:</strong> ${req.url}
-              </div>
-              <p>This usually means the Replit application needs to be started.</p>
-              <p>Please contact support or try again in a few minutes.</p>
-              <a href="/">← Return to Main Site</a>
-            </div>
-          </body>
-        </html>
-      `);
-    }
-  },
-  logLevel: 'info',
-  // WebSocket support for development
-  ws: true,
-}));
-
-// Handle root clientportal access (without trailing slash) - redirect to with slash
+// Client portal redirect - send users directly to the dedicated app
 app.get('/clientportal', (req, res) => {
-  console.log('[REDIRECT] /clientportal -> /clientportal/');
-  res.redirect(301, '/clientportal/');
+  console.log(`[CLIENT PORTAL] Redirecting to: https://breeze-client-manager-Rodrigomedeir12.replit.app`);
+  res.redirect(301, 'https://breeze-client-manager-Rodrigomedeir12.replit.app');
+});
+
+app.get('/clientportal/', (req, res) => {
+  console.log(`[CLIENT PORTAL] Redirecting to: https://breeze-client-manager-Rodrigomedeir12.replit.app`);
+  res.redirect(301, 'https://breeze-client-manager-Rodrigomedeir12.replit.app');
 });
 
 // Add a status check endpoint for the client portal

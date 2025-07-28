@@ -24,8 +24,8 @@ Preferred communication style: Simple, everyday language.
 ✓ **Meta Pixel Integration**: Full Facebook tracking with conversion events (Jan 24, 2025)
 ✓ **Instagram Landing Page**: Dedicated `/audit` page optimized for Instagram ads with mobile-first design
 ✓ **Logo Integration**: Professional Breeze Financials logo throughout all pages
-✓ **Client Portal Proxy**: Reverse proxy setup for `/clientportal` routing to separate Replit application
-✓ **Proxy Configuration Update**: Aligned development proxy with production nginx config for consistent behavior
+✓ **Client Portal Integration**: Direct redirect setup for `/clientportal` routing to separate Replit application
+✓ **Asset Loading Fix**: Resolved SPA asset loading issues by implementing direct redirect approach
 
 ## System Architecture
 
@@ -46,13 +46,12 @@ Preferred communication style: Simple, everyday language.
 - Centralized error handling middleware
 - Request logging middleware for API monitoring
 
-### Proxy Configuration
-- **Client Portal Proxy**: `/clientportal/` routes proxy to `https://breeze-client-manager-Rodrigomedeir12.replit.app/`
-- **Path Handling**: Preserves full path (matches production nginx configuration)
-- **Redirect Handling**: `/clientportal` redirects to `/clientportal/` (301 redirect)
-- **WebSocket Support**: Enabled for development hot reloading
-- **Error Handling**: Graceful fallback with detailed error page when client portal is unavailable
-- **Header Matching**: Development proxy headers align with production nginx setup
+### Client Portal Integration
+- **Direct Redirect**: `/clientportal` and `/clientportal/` redirect to `https://breeze-client-manager-Rodrigomedeir12.replit.app`
+- **Clean URLs**: Both paths provide seamless access to the client portal application
+- **Asset Handling**: Eliminates SPA asset loading issues by using direct redirect approach
+- **Development Ready**: Simplified configuration that works in both development and production
+- **Login Credentials**: admin@breezefinancials.com / admin123 for CFO dashboard access
 
 ### Styling and Design System
 - **Tailwind CSS** with custom CSS variables for theming

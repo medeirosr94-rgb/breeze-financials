@@ -37,12 +37,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Setup reverse proxy for client portal
+// Setup reverse proxy for client portal (must be after specific routes)
 app.use('/clientportal', createProxyMiddleware({
   target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app',
   changeOrigin: true,
-  timeout: 30000, // 30 second timeout
-  proxyTimeout: 30000,
+  timeout: 10000, // Reduced to 10 seconds
+  proxyTimeout: 10000,
   pathRewrite: {
     '^/clientportal': '', // Remove /clientportal from the path when forwarding
   },
@@ -52,7 +52,7 @@ app.use('/clientportal', createProxyMiddleware({
     proxyReq.setHeader('X-Forwarded-Host', req.headers.host || '');
     proxyReq.setHeader('X-Forwarded-Proto', req.protocol);
     proxyReq.setHeader('X-Real-IP', req.connection.remoteAddress || '');
-    console.log(`Proxying request to: ${req.url} -> ${proxyReq.path}`);
+    console.log(`[PROXY] Proxying request: ${req.method} ${req.url} -> https://breeze-client-manager-Rodrigomedeir12.replit.app${proxyReq.path}`);
   },
   onProxyRes: (proxyRes, req, res) => {
     console.log(`Proxy response: ${proxyRes.statusCode} for ${req.url}`);
@@ -65,12 +65,30 @@ app.use('/clientportal', createProxyMiddleware({
     if (!res.headersSent) {
       res.status(503).send(`
         <html>
-          <head><title>Client Portal Unavailable</title></head>
-          <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
-            <h1>Client Portal Temporarily Unavailable</h1>
-            <p>We're experiencing technical difficulties with the client portal.</p>
-            <p>Please try again in a few minutes or contact support.</p>
-            <a href="/" style="color: #14b8a6;">← Return to Main Site</a>
+          <head>
+            <title>Client Portal Unavailable</title>
+            <style>
+              body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f9f9f9; }
+              .container { max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+              h1 { color: #dc2626; margin-bottom: 20px; }
+              p { color: #666; margin-bottom: 15px; }
+              .status { background: #fef2f2; border: 1px solid #fecaca; padding: 15px; border-radius: 6px; margin: 20px 0; }
+              a { color: #14b8a6; text-decoration: none; font-weight: bold; }
+              a:hover { text-decoration: underline; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h1>🔧 Client Portal Unavailable</h1>
+              <p>The client portal server is currently not responding.</p>
+              <div class="status">
+                <strong>Target Server:</strong> breeze-client-manager-Rodrigomedeir12.replit.app<br>
+                <strong>Error:</strong> ${err.message || 'Connection timeout'}
+              </div>
+              <p>This usually means the Replit application needs to be started.</p>
+              <p>Please contact support or try again in a few minutes.</p>
+              <a href="/">← Return to Main Site</a>
+            </div>
           </body>
         </html>
       `);
@@ -80,6 +98,16 @@ app.use('/clientportal', createProxyMiddleware({
   // WebSocket support for development
   ws: true,
 }));
+
+// Add a status check endpoint for the client portal
+app.get('/api/clientportal-status', (req, res) => {
+  res.json({
+    status: 'proxy_configured',
+    target: 'https://breeze-client-manager-Rodrigomedeir12.replit.app',
+    message: 'Client portal proxy is configured. Target server status unknown.',
+    instructions: 'Ensure the target Replit app is running at: https://breeze-client-manager-Rodrigomedeir12.replit.app'
+  });
+});
 
 (async () => {
   const server = await registerRoutes(app);

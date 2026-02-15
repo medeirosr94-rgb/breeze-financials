@@ -59,7 +59,7 @@ export default function Benefits() {
           {/* Client Results */}
           <div className="mt-6 grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
             <div className="bg-teal-50 p-3 rounded-lg text-sm text-gray-700">
-              <span className="font-semibold">"We identified $18K in tax savings in our first month."</span> — Sarah, Tech Startup
+              <span className="font-semibold">"We identified significant tax savings in our first month."</span> — Sarah, Tech Startup
             </div>
             <div className="bg-teal-50 p-3 rounded-lg text-sm text-gray-700">
               <span className="font-semibold">"Finally understand where our money goes each month."</span> — Mike, Construction

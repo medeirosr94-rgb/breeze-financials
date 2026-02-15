@@ -95,7 +95,7 @@ export default function AuditLandingPage() {
                     <Star key={i} size={16} fill="currentColor" />
                   ))}
                 </div>
-                <span className="text-sm text-gray-600">4.9/5 Google Reviews</span>
+                <span className="text-sm text-gray-600">5-Star Rated</span>
               </div>
             </div>
           </div>
@@ -139,15 +139,15 @@ export default function AuditLandingPage() {
 
               {/* Results */}
               <div className="bg-teal-500 text-white rounded-xl p-6">
-                <h3 className="text-xl font-bold mb-4">Typical Results:</h3>
+                <h3 className="text-xl font-bold mb-4">What You Can Expect:</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold mb-1">$25K+</div>
-                    <div className="text-teal-100 text-sm">Average First Year Savings</div>
+                    <div className="text-3xl font-bold mb-1">Real Savings</div>
+                    <div className="text-teal-100 text-sm">Uncover Hidden Opportunities</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold mb-1">89%</div>
-                    <div className="text-teal-100 text-sm">See ROI in 3 Months</div>
+                    <div className="text-3xl font-bold mb-1">Fast ROI</div>
+                    <div className="text-teal-100 text-sm">Results in Months</div>
                   </div>
                 </div>
               </div>
@@ -263,7 +263,7 @@ export default function AuditLandingPage() {
       {/* Social Proof */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">Trusted by 50+ Toronto Businesses</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-8">Trusted by Toronto Businesses</h3>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center justify-center mb-4">
@@ -274,7 +274,7 @@ export default function AuditLandingPage() {
                 </div>
               </div>
               <p className="text-gray-600 mb-4 italic">
-                "The audit found $18K in savings we didn't know existed. Best decision we made this year."
+                "The audit uncovered savings we didn't know existed. Best decision we made this year."
               </p>
               <div className="font-semibold">Sarah M.</div>
               <div className="text-sm text-gray-500">Tech Startup CEO</div>

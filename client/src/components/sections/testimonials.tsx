@@ -2,25 +2,25 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah Chen",
+    name: "Sarah C.",
     company: "Tech Startup Founder",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b37c?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
-    content: "We saved $25,000 in the first year with Breeze's CFO insights. Got clarity on our business and now we can finally sleep at night knowing our finances are optimized.",
-    result: "$25K saved in year 1"
+    initials: "SC",
+    content: "We saved thousands in our first year with Breeze's CFO insights. Got clarity on our business and now we can finally sleep at night knowing our finances are optimized.",
+    result: "Significant tax savings"
   },
   {
-    name: "Maria Rodriguez",
+    name: "Maria R.",
     company: "Restaurant Owner", 
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
+    initials: "MR",
     content: "The cash flow planning alone has been game-changing. The Breeze team helped us navigate a critical growth period without cash flow stress.",
-    result: "Zero cash flow issues during expansion"
+    result: "Zero cash flow issues"
   },
   {
-    name: "David Thompson",
+    name: "David T.",
     company: "Construction Company",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&w=150&h=150&fit=crop&crop=face",
+    initials: "DT",
     content: "Finally, financial reports that actually help me make decisions. The monthly reviews keep us on track and profitable.",
-    result: "15% profit increase in 6 months"
+    result: "Improved profitability"
   }
 ];
 
@@ -44,12 +44,6 @@ export default function Testimonials() {
                     <Star key={i} fill="currentColor" size={16} />
                   ))}
                 </div>
-                {/* Video Play Button for first testimonial */}
-                {index === 0 && (
-                  <button className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white hover:bg-teal-600 transition-colors">
-                    <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5"></div>
-                  </button>
-                )}
               </div>
               
               {/* Result Badge */}
@@ -63,11 +57,9 @@ export default function Testimonials() {
                 "{testimonial.content}"
               </p>
               <div className="flex items-center">
-                <img 
-                  src={testimonial.avatar}
-                  alt={`${testimonial.name} testimonial`} 
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
+                <div className="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm mr-4">
+                  {testimonial.initials}
+                </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
                   <p className="text-sm text-gray-600">{testimonial.company}</p>

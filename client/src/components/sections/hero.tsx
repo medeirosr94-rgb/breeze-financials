@@ -51,12 +51,12 @@ export default function Hero() {
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 mb-8 border border-teal-100">
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-teal-600 mb-1">89%</div>
-                  <div className="text-sm text-gray-600">You see ROI in 3 months</div>
+                  <div className="text-2xl font-bold text-teal-600 mb-1">Fast ROI</div>
+                  <div className="text-sm text-gray-600">Clients typically see results in months</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-teal-600 mb-1">$25K</div>
-                  <div className="text-sm text-gray-600">Your average first year savings</div>
+                  <div className="text-2xl font-bold text-teal-600 mb-1">Real Savings</div>
+                  <div className="text-sm text-gray-600">Uncover hidden cost-saving opportunities</div>
                 </div>
               </div>
             </div>
@@ -79,13 +79,7 @@ export default function Hero() {
 
             {/* Social Proof */}
             <div className="text-center lg:text-left">
-              <p className="text-sm text-gray-500 mb-4">Trusted by 50+ Toronto businesses</p>
-              <div className="flex items-center justify-center lg:justify-start space-x-6 mb-4">
-                <div className="flex items-center">
-                  <span className="text-blue-500 mr-2 font-bold">G</span>
-                  <span className="text-sm font-medium">4.9/5 Google Reviews</span>
-                </div>
-              </div>
+              <p className="text-sm text-gray-500 mb-4">Trusted by Toronto small businesses</p>
               <div className="flex items-center justify-center lg:justify-start space-x-4">
                 <div className="bg-gray-100 px-3 py-1 rounded text-xs text-gray-600">
                   CPA Certified

@@ -58,12 +58,6 @@ export default function About() {
                     <Calendar className="mr-2" size={20} />
                     Book a Free Strategy Call
                   </Button>
-                  <Button
-                    variant="outline"
-                    className="border-teal-500 text-teal-600 hover:bg-teal-50 rounded-full"
-                  >
-                    Ask Our CFO Team
-                  </Button>
                 </div>
                 <p className="text-sm text-gray-500 mt-2">
                   Available today • Free consultation • No commitment

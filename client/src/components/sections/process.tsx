@@ -23,7 +23,7 @@ export default function Process() {
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Step 1 */}
           <div className="text-center relative">
-            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg">
+            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
               1
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Request Your Free Audit</h3>
@@ -35,7 +35,7 @@ export default function Process() {
 
           {/* Step 2 */}
           <div className="text-center relative">
-            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg">
+            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
               2
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Meet Your Expert</h3>
@@ -47,7 +47,7 @@ export default function Process() {
 
           {/* Step 3 */}
           <div className="text-center">
-            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg">
+            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
               3
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Get Your Audit + Discover CFO Value</h3>

@@ -17,7 +17,7 @@ export default function FinalCTA() {
   const handleBookCall = () => {
     // Track Calendly booking click from final CTA
     MetaPixelEvents.trackCalendlyClick();
-    window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min?month=2025-07', '_blank');
+    window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min', '_blank');
   };
 
   return (

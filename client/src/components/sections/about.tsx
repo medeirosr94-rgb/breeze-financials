@@ -6,7 +6,7 @@ export default function About() {
   const handleBookCall = () => {
     // Track Calendly booking click in Meta Pixel
     MetaPixelEvents.trackCalendlyClick();
-    window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min?month=2025-07', '_blank');
+    window.open('https://calendly.com/rodrigomedeiros-breezefinancials/30min', '_blank');
   };
 
   return (

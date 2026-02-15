@@ -4,9 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Shield, Clock, Star, Phone, CheckCircle, TrendingUp, MapPin, AlertCircle } from "lucide-react";
-import { useFormSubmission } from "@/hooks/use-form-submission";
 import { MetaPixelEvents } from "@/lib/meta-pixel";
 import logoPath from "@assets/Transparent Logo (Finalized)_1753319571910.png";
+
+const CONTACT_EMAIL = "rodrigomedeiros@breezefinancials.com";
 
 export default function AuditLandingPage() {
   const [formData, setFormData] = useState({
@@ -16,16 +17,13 @@ export default function AuditLandingPage() {
     businessType: ""
   });
 
-  const { submitLead, isLoading } = useFormSubmission();
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      await submitLead(formData);
-      setFormData({ name: "", email: "", businessName: "", businessType: "" });
-    } catch (error) {
-      // Error is handled by the mutation hook
-    }
+    const subject = encodeURIComponent(`Free Audit Request - ${formData.businessName}`);
+    const body = encodeURIComponent(
+      `Hi Breeze Financials,\n\nI'd like to request a free bookkeeping audit.\n\nName: ${formData.name}\nEmail: ${formData.email}\nBusiness: ${formData.businessName}\nIndustry: ${formData.businessType}\n\nLooking forward to hearing from you!`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -240,20 +238,11 @@ export default function AuditLandingPage() {
 
                 <Button
                   type="submit"
-                  disabled={isLoading || !formData.name || !formData.email || !formData.businessName}
+                  disabled={!formData.name || !formData.email || !formData.businessName}
                   className="w-full bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 text-lg shadow-lg hover:shadow-xl"
                 >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </div>
-                  ) : (
-                    <>
-                      Get My Free Audit Now
-                      <TrendingUp className="ml-2" size={20} />
-                    </>
-                  )}
+                  Get My Free Audit Now
+                  <TrendingUp className="ml-2" size={20} />
                 </Button>
               </form>
 

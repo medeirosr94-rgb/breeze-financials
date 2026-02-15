@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Shield, Clock, Star, ArrowRight, Lock, TrendingUp } from "lucide-react";
-import { useFormSubmission } from "@/hooks/use-form-submission";
+
+const CONTACT_EMAIL = "rodrigomedeiros@breezefinancials.com";
 
 export default function Hero() {
   const [formData, setFormData] = useState({
@@ -12,12 +13,13 @@ export default function Hero() {
     businessName: ""
   });
 
-  const { submitLead, isLoading } = useFormSubmission();
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitLead(formData);
-    setFormData({ name: "", email: "", businessName: "" });
+    const subject = encodeURIComponent(`Free Audit Request - ${formData.businessName}`);
+    const body = encodeURIComponent(
+      `Hi Breeze Financials,\n\nI'd like to request a free bookkeeping audit.\n\nName: ${formData.name}\nEmail: ${formData.email}\nBusiness: ${formData.businessName}\n\nLooking forward to hearing from you!`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -147,10 +149,9 @@ export default function Hero() {
               
               <Button
                 type="submit"
-                disabled={isLoading}
                 className="w-full bg-teal-500 text-white py-4 rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-200 transform hover:scale-[1.02]"
               >
-                {isLoading ? "Submitting..." : "Request Your Free Audit"}
+                Request Your Free Audit
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </form>

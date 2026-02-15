@@ -20,38 +20,38 @@ export default function Process() {
           <p className="text-xl text-gray-600">Get started in 3 simple steps</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* Step 1 */}
-          <div className="text-center relative">
-            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
-              1
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Request Your Free Audit</h3>
-            <p className="text-gray-600">Fill out our simple form and we'll schedule your complimentary bookkeeping audit within 24 hours.</p>
-            
-            {/* Connector Line (hidden on mobile) */}
-            <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-teal-200 transform translate-x-4 -translate-y-2"></div>
-          </div>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Connector Lines (hidden on mobile) */}
+          <div className="hidden md:block absolute top-10 left-[calc(16.67%+2.5rem)] right-[calc(83.33%-2.5rem+2rem)] h-0.5 bg-teal-200"></div>
+          <div className="hidden md:block absolute top-10 left-[calc(50%+2.5rem)] right-[calc(50%-2.5rem+2rem)] h-0.5 bg-teal-200"></div>
 
-          {/* Step 2 */}
-          <div className="text-center relative">
-            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
-              2
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
+                1
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Request Your Free Audit</h3>
+              <p className="text-gray-600">Fill out our simple form and we'll schedule your complimentary bookkeeping audit within 24 hours.</p>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Meet Your Expert</h3>
-            <p className="text-gray-600">Connect with your dedicated financial expert via Zoom or in-person meeting in the Greater Toronto Area.</p>
-            
-            {/* Connector Line (hidden on mobile) */}
-            <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-teal-200 transform translate-x-4 -translate-y-2"></div>
-          </div>
 
-          {/* Step 3 */}
-          <div className="text-center">
-            <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
-              3
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
+                2
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Meet Your Expert</h3>
+              <p className="text-gray-600">Connect with your dedicated financial expert via Zoom or in-person meeting in the Greater Toronto Area.</p>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Get Your Audit + Discover CFO Value</h3>
-            <p className="text-gray-600">Receive your detailed audit results and learn how Fractional CFO services can transform your business.</p>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg relative z-10">
+                3
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Get Your Audit + Discover CFO Value</h3>
+              <p className="text-gray-600">Receive your detailed audit results and learn how Fractional CFO services can transform your business.</p>
+            </div>
           </div>
         </div>
 

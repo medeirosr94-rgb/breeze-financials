@@ -101,9 +101,10 @@ export default function Footer() {
             </ul>
             
             {/* Social Media */}
-            <div className="flex space-x-4 mt-6">
-              <a href="https://instagram.com/breeze_financials" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-400 transition-colors">
+            <div className="flex items-center space-x-4 mt-6">
+              <a href="https://instagram.com/breeze_financials" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-400 hover:text-teal-400 transition-colors">
                 <FaInstagram size={20} />
+                <span>@breeze_financials</span>
               </a>
             </div>
           </div>
